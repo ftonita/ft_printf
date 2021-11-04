@@ -44,13 +44,14 @@ int	ft_printf(const char *s, ...)
 	va_list	ar;
 	int		c;
 	va_start(ar, s);
+	int	i;
 
-	while (*s)
+	i = 0;
+	while (s[i])
     {
-		c = ft_ar_count(s);
-		c += va_arg(ar, int);
-		printf("res: %d\n", c);
-		s++;
+		c = va_arg(ar, int) + '0';
+		printf("arg: %c\n", c);
+		i++;
 	}
     va_end(ar);
 	return 0;

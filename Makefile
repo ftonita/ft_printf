@@ -1,6 +1,10 @@
 SRCS = ft_printf.c \
 		ft_strlen.c \
-		ft_strncmp.c
+		ft_strncmp.c \
+		ft_putnbr.c \
+		ft_putchar.c \
+		ft_putstr.c \
+		ft_puthex.c 
 
 OBJ=$(SRCS:.c=.o)
 
