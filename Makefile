@@ -4,7 +4,9 @@ SRCS = ft_printf.c \
 		ft_putnbr.c \
 		ft_putchar.c \
 		ft_putstr.c \
-		ft_puthex.c 
+		ft_puthex.c \
+		ft_putui.c \
+		ft_putaddr.c 
 
 OBJ=$(SRCS:.c=.o)
 

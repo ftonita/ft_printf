@@ -1,12 +1,16 @@
 #include "ft_printf.h"
 
-void	ft_putstr(char *s)
+size_t	ft_putstr(char *s)
 {
+	size_t	c;
+
+	c = 0;
 	if (!s)
-		return ;
+		return (0);
 	while (*s)
 	{
-		write(1, s, 1);
+		c += write(1, s, 1);
 		s++;
 	}
+	return (c);
 }

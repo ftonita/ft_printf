@@ -1,6 +1,10 @@
 #include "ft_printf.h"
 
-void	ft_putchar(char c)
+size_t	ft_putchar(char c)
 {
-	write(1, &c, 1);
+	size_t	k;
+
+	k = 0;
+	k += write(1, &c, 1);
+	return (k);
 }

@@ -1,66 +1,63 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-char	*ft_strstr(const char *in, const char *str)
+size_t	ft_print_arg(char s, va_list ar)
 {
-    char c;
-    size_t len;
+	int	c;
 
-    c = *str++;
-    if (!c)
-        return (char *) in;
-
-    len = ft_strlen(str);
-    while (ft_strncmp(in, str, len) != 0)
-	{
-        char sc;
-
-		sc = 0;
-        while (sc != c)
-		{
-            sc = *in++;
-            if (!sc)
-                return (char *) 0;
-        } 
-    } 
-
-    return (char *) (in - 1);
-}
-
-int	ft_ar_count(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		i++;
-	}
-	return i;
+	c = 0;
+	if (s == 'd')
+		c += ft_putnbr(va_arg(ar, int));
+	else if (s == 's')
+		c += ft_putstr(va_arg(ar, char *));
+	else if (s == 'c')
+		c += ft_putchar(va_arg(ar, int));
+	else if (s == 'i')
+		c += ft_putnbr(va_arg(ar, int));
+	else if (s == 'u')
+		c += ft_putui(va_arg(ar, size_t));
+	else if (s == 'p')
+		c += ft_putaddr(va_arg(ar, int));
+	else if (s == 'X')
+		c += ft_puthex(va_arg(ar, int), 0);
+	else if (s == 'x')
+		c += ft_puthex(va_arg(ar, int), 1);
+	else if (s == '%')
+		c += ft_putchar('%');
+	else
+		return (0);
+	return (c);
 }
 
 int	ft_printf(const char *s, ...)
 {
 	va_list	ar;
-	int		c;
-	va_start(ar, s);
-	int	i;
+	size_t	c;
+	int		i;
 
+	va_start(ar, s);
 	i = 0;
+	c = 0;
 	while (s[i])
     {
-		c = va_arg(ar, int) + '0';
-		printf("arg: %c\n", c);
+		if (s[i] == '%' && s[i + 1])
+		{
+			c += ft_print_arg(s[i + 1], ar);
+			i++;
+		}
+		else c += write(1, &s[i], 1);
 		i++;
 	}
     va_end(ar);
-	return 0;
+	printf("\nCOUNT: %zu\n", c);
+	return (c);
 }
 
 int	main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-	ft_printf("qwerty", 1, 2, 3, 4, 5);
+	ft_printf("-%d\t%c-%c-%c-%c-%c!\n!\n", 567568, 'B', 'c', 'D', 'e', 'F');
+	printf("\nCOUNT : %d\n", printf("-%d\t%c-%c-%c-%c-%c!\n!\n", 567568, 'B', 'c', 'D', 'e', 'F'));
 	return 0;
 }

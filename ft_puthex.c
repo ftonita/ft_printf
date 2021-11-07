@@ -1,7 +1,8 @@
 #include "ft_printf.h"
 
-void	ft_puthex(int n)
+size_t	ft_puthex(int n, int type)
 {
 	(void) n;
-return ;
+	(void) type;
+	return 0;
 }
