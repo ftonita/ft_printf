@@ -57,7 +57,7 @@ int	main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-	ft_printf("-%d\t%c-%c-%c-%c-%c!\n!\n", 567568, 'B', 'c', 'D', 'e', 'F');
-	printf("\nCOUNT : %d\n", printf("-%d\t%c-%c-%c-%c-%c!\n!\n", 567568, 'B', 'c', 'D', 'e', 'F'));
+	ft_printf("-%d\t%s-%c-%c-%-w%c-%c!\n!\n", 567568, "AbcdefgH", 'c', 'D', 'e', 'F');
+	printf("\nCOUNT : %d\n", printf("-%d\t%s-%c-%c-%w-%c-%c!\n!\n", 567568, "AbcdefgH", 'c', 'D', 'e', 'F'));
 	return 0;
 }
