@@ -1,7 +1,10 @@
 #include "ft_printf.h"
+#include <stdio.h>
 
-size_t	ft_putaddr(int n)
+size_t	ft_putaddr(void *n)
 {
-	(void) n;
-	return 0;
+	int	c;
+
+	c = ft_putstr((char *)&n);
+	return (c);
 }

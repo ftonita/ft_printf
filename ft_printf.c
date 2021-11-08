@@ -17,7 +17,7 @@ size_t	ft_print_arg(char s, va_list ar)
 	else if (s == 'u')
 		c += ft_putui(va_arg(ar, size_t));
 	else if (s == 'p')
-		c += ft_putaddr(va_arg(ar, int));
+		c += ft_putaddr(va_arg(ar, int *));
 	else if (s == 'X')
 		c += ft_puthex(va_arg(ar, int), 0);
 	else if (s == 'x')
@@ -57,7 +57,7 @@ int	main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-	ft_printf("-%d\t%s-%c-%c-%-w%c-%c!\n!\n", 567568, "AbcdefgH", 'c', 'D', 'e', 'F');
-	printf("\nCOUNT : %d\n", printf("-%d\t%s-%c-%c-%w-%c-%c!\n!\n", 567568, "AbcdefgH", 'c', 'D', 'e', 'F'));
+	ft_printf("\n%u\n", 4294967295);
+	printf("\nCOUNT : %d\n", printf("\n%lu\n", 4294967295)); 
 	return 0;
 }
