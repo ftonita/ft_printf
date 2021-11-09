@@ -1,5 +1,6 @@
 #include "ft_printf.h"
 #include <stdio.h>
+#include <limits.h>
 
 size_t	ft_print_arg(char s, va_list ar)
 {
@@ -15,9 +16,9 @@ size_t	ft_print_arg(char s, va_list ar)
 	else if (s == 'i')
 		c += ft_putnbr(va_arg(ar, int));
 	else if (s == 'u')
-		c += ft_putui(va_arg(ar, size_t));
+		c += ft_putui(va_arg(ar, unsigned int));
 	else if (s == 'p')
-		c += ft_putaddr(va_arg(ar, int *));
+		c += ft_putaddr(va_arg(ar, void *));
 	else if (s == 'X')
 		c += ft_puthex(va_arg(ar, int), 0);
 	else if (s == 'x')
@@ -49,15 +50,18 @@ int	ft_printf(const char *s, ...)
 		i++;
 	}
     va_end(ar);
-	printf("\nCOUNT: %zu\n", c);
 	return (c);
 }
 
+/*
 int	main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-	ft_printf("\n%u\n", 4294967295);
-	printf("\nCOUNT : %d\n", printf("\n%lu\n", 4294967295)); 
+
+	unsigned int a = 4294967296;
+	ft_printf(" %u ", a);
+	printf("\n");
+	printf(" %u ", a);
 	return 0;
-}
+}*/

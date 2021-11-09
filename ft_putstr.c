@@ -6,7 +6,10 @@ size_t	ft_putstr(char *s)
 
 	c = 0;
 	if (!s)
-		return (0);
+	{
+		c += ft_putstr("(null)");
+		return (c);
+	}
 	while (*s)
 	{
 		c += write(1, s, 1);

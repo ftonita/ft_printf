@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-size_t	ft_putui(long int n)
+size_t	ft_putui(unsigned int n)
 {
 	size_t	c;
 
