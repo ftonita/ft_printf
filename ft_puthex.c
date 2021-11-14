@@ -9,14 +9,15 @@ size_t	ft_puthex(size_t n, int type)
 	{
 		if (type == 0)
 		{
-			c += ft_putchar('A');
+			c += ft_putchar('a' + (n % 10));
 		}
 		else if (type == 1)
 		{
-
+			c += ft_putchar('A' + (n % 10));
 		}
 	}
 	else if (n < 9)
 		ft_putchar(n + 48);
+	c = c / 16;
 	return (c);
 }

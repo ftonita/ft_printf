@@ -20,9 +20,9 @@ size_t	ft_print_arg(char s, va_list ar)
 	else if (s == 'p')
 		c += ft_putaddr(va_arg(ar, void *));
 	else if (s == 'X')
-		c += ft_puthex(va_arg(ar, int), 0);
-	else if (s == 'x')
 		c += ft_puthex(va_arg(ar, int), 1);
+	else if (s == 'x')
+		c += ft_puthex(va_arg(ar, int), 0);
 	else if (s == '%')
 		c += ft_putchar('%');
 	else
