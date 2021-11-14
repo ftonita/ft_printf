@@ -1,8 +1,22 @@
 #include "ft_printf.h"
 
-size_t	ft_puthex(int n, int type)
+size_t	ft_puthex(size_t n, int type)
 {
-	(void) n;
-	(void) type;
-	return 0;
+	int c;
+
+	c = 0;
+	if (n < 16 && n > 9)
+	{
+		if (type == 0)
+		{
+			c += ft_putchar('A');
+		}
+		else if (type == 1)
+		{
+
+		}
+	}
+	else if (n < 9)
+		ft_putchar(n + 48);
+	return (c);
 }
