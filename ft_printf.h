@@ -18,7 +18,6 @@
 # include <stdarg.h>
 
 int		ft_printf(const char *s, ...);
-size_t	ft_strlen(const char *s);
 size_t	ft_putnbr(int n);
 size_t	ft_putchar(char c);
 size_t	ft_putstr(char *s);
