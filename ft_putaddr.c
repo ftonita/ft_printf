@@ -1,20 +1,48 @@
-#include "ft_printf.h"
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putaddr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ftonita <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/15 21:50:48 by ftonita           #+#    #+#             */
+/*   Updated: 2021/11/15 21:50:49 by ftonita          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-size_t	ft_putaddr(void *n)
+#include "ft_printf.h"
+
+size_t	ft_puthexaddr(size_t k)
 {
 	int	c;
 
-	c = printf("\n[%zx]\n", (size_t)n);
+	c = 0;
+	if (k >= 16)
+		c += ft_puthexaddr(k / 16);
+	if (k % 16 < 16 && k % 16 > 9)
+	{
+		c += ft_putchar('a' + (k % 16) - 10);
+	}
+	else if (k % 16 < 10 && k % 16 >= 0)
+		c += ft_putchar(k % 16 + '0');
 	return (c);
 }
 
-int main(void)
+size_t	ft_putaddr(void *n)
 {
-	char s;
+	int		c;
+	size_t	k;
 
-	s = 0;
-	printf("p: %p\n", &s);
-	ft_putaddr(&s);
-	return 0;
+	c = 0;
+	c += write(1, "0x", 2);
+	k = (size_t) n;
+	if (k >= 16)
+		c += ft_puthexaddr(k / 16);
+	if (k % 16 < 16 && k % 16 > 9)
+	{
+		c += ft_putchar('a' + (k % 16) - 10);
+	}
+	else if (k % 16 < 10 && k % 16 >= 0)
+		c += ft_putchar(k % 16 + '0');
+	return (c);
 }

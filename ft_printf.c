@@ -1,6 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ftonita <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/15 21:50:36 by ftonita           #+#    #+#             */
+/*   Updated: 2021/11/15 21:50:38 by ftonita          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
-#include <stdio.h>
-#include <limits.h>
 
 size_t	ft_print_arg(char s, va_list ar)
 {
@@ -40,28 +50,16 @@ int	ft_printf(const char *s, ...)
 	i = 0;
 	c = 0;
 	while (s[i])
-    {
+	{
 		if (s[i] == '%' && s[i + 1])
 		{
 			c += ft_print_arg(s[i + 1], ar);
 			i++;
 		}
-		else c += write(1, &s[i], 1);
+		else
+			c += write(1, &s[i], 1);
 		i++;
 	}
-    va_end(ar);
+	va_end(ar);
 	return (c);
 }
-
-/*
-int	main(int argc, char **argv)
-{
-	(void)argc;
-	(void)argv;
-
-	unsigned int a = 4294967296;
-	ft_printf(" %u ", a);
-	printf("\n");
-	printf(" %u ", a);
-	return 0;
-}*/
